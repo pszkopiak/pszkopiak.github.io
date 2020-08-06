@@ -179,8 +179,8 @@ function initialize()
 		type: 'pattern', patternUrl: "data/letterB.patt",
 	})
 	
-	let loader3 = new THREE.GLTF2Loader();
-	loader.load('models/Cube_AnimationSphere.gltf',function (gltf){
+	let loader3 = new THREE.GLTFLoader();
+	loader3.load('models/Cube_AnimationSphere.gltf',function (gltf){
 
         let geometry3 = new THREE.CubeGeometry(1,1,1);
         let material3 = new THREE.MeshNormalMaterial({
