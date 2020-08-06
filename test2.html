@@ -171,14 +171,26 @@ function initialize()
 	);
 	markerRoot2.add( pointLight2 );
 	
-	/*
+	
 	// build markerControls3 
 	markerRoot3 = new THREE.Group();
 	scene.add(markerRoot3);
 	let markerControls3 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot3, {
 		type: 'pattern', patternUrl: "data/letterB.patt",
 	})
+	let geometry13	= new THREE.CubeGeometry(1,1,1);
+	let material13	= new THREE.MeshNormalMaterial({
+		transparent: true,
+		opacity: 0.5,
+		side: THREE.DoubleSide
+	}); 
 	
+	mesh3 = new THREE.Mesh( geometry13, material13 );
+	mesh3.position.y = 0.5;
+	
+	markerRoot3.add( mesh3 );
+	
+	/*
 	let loader3 = new THREE.GLTFLoader();
 	loader3.load('models/Cube_AnimationSphere.gltf',function (gltf){
 
