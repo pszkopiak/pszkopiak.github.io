@@ -125,7 +125,7 @@ function initialize()
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
 	
-	new THREE.MTLLoader()
+	/*new THREE.MTLLoader()
 		.setPath( 'models/' )
 		.load( 'Can.mtl', function ( materials ) {
 			materials.preload();
@@ -139,7 +139,23 @@ function initialize()
 					mesh0.scale.set(0.25,0.25,0.25);
 					markerRoot1.add(mesh0);
 				}, onProgress, onError );
-		});
+		});*/
+		
+	var mtlLoader = New THREE.MTLLoader();
+	mtlLoader.SetTexturePath('models/');
+	mtlLoader.SetPath('models/');
+	mtlLoader.load('Can.mtl', function ( materials ) {
+		materials.preload();
+		
+		var objLoader = new THREE.OBJLoader();
+		objLoader.setMaterials(materials);
+		objLoader.SetPath('models/');
+		objLoader.load('Can.obj', function(object) {
+			object.position.y = 0.25;
+			object.scale.set(0.25,0.25,0.25);
+			markerRoot1.add(object);
+			});
+	});		
 }
 
 
