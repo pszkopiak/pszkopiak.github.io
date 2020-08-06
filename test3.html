@@ -191,12 +191,12 @@ function initialize()
 	
 	markerRoot3.add( mesh3 );*/
 	
-	/*
-	let loader3 = new THREE.GLTFLoader();
+	
+	/*var loader3 = new THREE.GLTFLoader();
 	loader3.load('models/Cube_AnimationSphere.gltf',function (gltf){
 
-        let geometry3 = new THREE.CubeGeometry(1,1,1);
-        let material3 = new THREE.MeshNormalMaterial({
+        var geometry3 = new THREE.CubeGeometry(1,1,1);
+        var material3 = new THREE.MeshNormalMaterial({
             transparent : true,
             opacity: 0.5,
             side: THREE.DoubleSide
@@ -206,7 +206,7 @@ function initialize()
         marker3.add( light );
         marker3.add( gltf.scene );
 
-        let animationClip = gltf.animations[ 0 ];
+        var animationClip = gltf.animations[ 0 ];
         mixer = new THREE.AnimationMixer( scene );
         mixer.clipAction( animationClip ).play();
 
@@ -214,7 +214,7 @@ function initialize()
 
     } );*/
 	
-	let loader3 = new THREE.GLTFLoader();
+	var loader3 = new THREE.GLTFLoader();
 	//var dracoLoader = new DRACOLoader();
 	//dracoLoader.setDecoderPath( 'models/Cube_AnimationSphere.gltf' );
 	//loader.setDRACOLoader( dracoLoader );
@@ -238,7 +238,7 @@ function initialize()
 			// called when loading has errors
 			function ( error ) {
 
-				console.log( 'An error happened' );
+				console.log( 'An error happened'  + error );
 
 			}
 		);
