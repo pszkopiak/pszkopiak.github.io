@@ -214,7 +214,7 @@ function initialize()
 
     } );*/
 	
-	let loader3 = new GLTFLoader();
+	let loader3 = new THREE.GLTFLoader();
 	//var dracoLoader = new DRACOLoader();
 	//dracoLoader.setDecoderPath( 'models/Cube_AnimationSphere.gltf' );
 	//loader.setDRACOLoader( dracoLoader );
@@ -224,11 +224,11 @@ function initialize()
 			function (gltf ) {
 				marker3.add( gltf.scene );
 				
-				gltf.animations; // Array<THREE.AnimationClip>
+				/*gltf.animations; // Array<THREE.AnimationClip>
 				gltf.scene; // THREE.Group
 				gltf.scenes; // Array<THREE.Group>
 				gltf.cameras; // Array<THREE.Camera>
-				gltf.asset; // Object
+				gltf.asset; // Object*/
 			},
 			function ( xhr ) {
 
