@@ -41,6 +41,12 @@ var markerRoot2;
 
 var mesh2;
 
+var markerRoot3;
+
+var mesh3;
+
+var mixer;
+
 initialize();
 animate();
 
@@ -165,6 +171,37 @@ function initialize()
 	);
 	markerRoot2.add( pointLight2 );
 	
+	
+	// build markerControls3 
+	markerRoot3 = new THREE.Group();
+	scene.add(markerRoot3);
+	let markerControls3 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot3, {
+		type: 'pattern', patternUrl: "data/letterB.patt",
+	})
+	
+	let loader3 = new THREE.GLTF2Loader();
+	loader.load('models/Cube_AnimationSphere.gltf',function (gltf){
+
+        let geometry3 = new THREE.CubeGeometry(1,1,1);
+        let material3 = new THREE.MeshNormalMaterial({
+            transparent : true,
+            opacity: 0.5,
+            side: THREE.DoubleSide
+        }); 
+        mesh3 = new THREE.Mesh( geometry, material );
+
+        marker3.add( light );
+        marker3.add( gltf.scene );
+
+        let animationClip = gltf.animations[ 0 ];
+        mixer = new THREE.AnimationMixer( scene );
+        mixer.clipAction( animationClip ).play();
+
+        animate();
+
+    } );
+	
+	
 }
 
 
@@ -175,6 +212,8 @@ function update()
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
 		arToolkitContext.update( arToolkitSource.domElement );
+		
+	mixer.update( delta );
 }
 
 
