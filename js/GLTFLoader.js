@@ -3597,4 +3597,3 @@ var GLTFLoader = ( function () {
 
 } )();
 
-export { GLTFLoader };
