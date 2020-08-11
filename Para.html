@@ -51,10 +51,10 @@ function initialize()
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 	renderer.setSize( 1920, 1080 );
-	renderer.domElement.style.position = 'absolute'
-	renderer.domElement.style.top = '0px'
-	renderer.domElement.style.left = '0px'
-	document.body.appendChild( renderer.domElement );
+	//renderer.domElement.style.position = 'absolute'
+	//renderer.domElement.style.top = '0px'
+	//renderer.domElement.style.left = '0px'
+	//document.body.appendChild( renderer.domElement );
 
 	clock = new THREE.Clock();
 	deltaTime = 0;
@@ -131,7 +131,7 @@ function initialize()
 	
 	mesh2 = new THREE.Mesh( geometry2, material2 );
 	mesh2.rotation.x = -Math.PI/2;
-	mesh2.position.x = 1;
+	mesh2.position.y = 0.5;
 	
 	markerRoot1.add( mesh2 );
 }
