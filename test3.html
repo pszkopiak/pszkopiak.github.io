@@ -138,7 +138,7 @@ function initialize()
 
 	var loader3 = new GLTFLoader().setPath("models/");
 		  loader3.load("Cube_AnimationSphere.gltf", function (gltf) {
-			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xff0000});
 			mixer= new THREE.AnimationMixer(gltf.scene);			
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
 			markerRoot3.add(gltf.scene);
