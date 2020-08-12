@@ -133,11 +133,11 @@ function initialize()
 	markerRoot3 = new THREE.Group();
 	scene.add(markerRoot3);
 	let markerControls3 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot3, {
-		type: 'unknown', patternUrl: "images/trex.patt",
+		type: 'unknown', patternUrl: "images/trex",
 	})	
 
 	var loader3 = new GLTFLoader().setPath("models/");
-		  loader3.load("Circel_Icons.gltf", function (gltf) {
+		  loader3.load("BWI_IT_Icons.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			mixer= new THREE.AnimationMixer(gltf.scene);			
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
