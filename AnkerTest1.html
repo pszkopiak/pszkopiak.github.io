@@ -109,13 +109,9 @@ function initialize()
 	markerRoot1 = new THREE.Group();
 	scene.add(markerRoot1);
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern', patternUrl: "data/anker_andrea.patt",
-	})
-	markerRoot2 = new THREE.Group();
-	scene.add(markerRoot2);
-	let markerControls2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
 		type: 'pattern', patternUrl: "data/anker_andrea",
 	})
+
 
 	let geometry1	= new THREE.CubeGeometry(1,1,1);
 	let material1	= new THREE.MeshNormalMaterial({
@@ -128,7 +124,6 @@ function initialize()
 	mesh1.position.y = 0.5;
 	
 	markerRoot1.add( mesh1 );
-	markerRoot2.add( mesh1 );
 }
 
 
