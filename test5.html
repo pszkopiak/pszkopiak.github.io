@@ -141,7 +141,7 @@ function initialize()
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			mixer= new THREE.AnimationMixer(gltf.scene);			
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
-			gltf.scene.scale.set(0.5,0.5,0.5)
+			gltf.scene.scale.set(0.2,0.2,0.)
 			markerRoot3.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
