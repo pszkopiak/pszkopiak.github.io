@@ -161,16 +161,17 @@ function initialize()
 
 function update()
 {
-	//if ( markerRoot3.visible ){
-		if(gltfLoaded){
-			mixer.update(deltaTime);
-		}
-	//}
-
-	// update artoolkit on every frame
-	if ( arToolkitSource.ready !== false )
-		arToolkitContext.update( arToolkitSource.domElement );
-	
+    // update artoolkit on every frame
+    if ( arToolkitSource.ready !== false )
+        arToolkitContext.update( arToolkitSource.domElement );
+    if ( markerRoot3.visible ){
+        if(gltfLoaded){
+            mixer.update(deltaTime);
+        }
+    }
+    else{
+        markerRoot3.visible = true;
+    }   
 }
 
 
