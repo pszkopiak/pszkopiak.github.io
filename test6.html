@@ -70,7 +70,7 @@ function initialize()
 		alpha: true
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	renderer.setSize( 640, 480 );
+	renderer.setSize( 1920, 1080 );
 	renderer.domElement.style.position = 'absolute'
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
@@ -161,11 +161,11 @@ function initialize()
 
 function update()
 {
-	if ( markerRoot3.visible ){
+	//if ( markerRoot3.visible ){
 		if(gltfLoaded){
 			mixer.update(deltaTime);
 		}
-	}
+	//}
 
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
