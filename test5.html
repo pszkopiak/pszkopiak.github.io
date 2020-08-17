@@ -171,6 +171,9 @@ function update()
     }
     else{
         markerRoot3.visible = true;
+        if(gltfLoaded){
+            mixer.update(deltaTime);
+        }
     }   
 }
 
