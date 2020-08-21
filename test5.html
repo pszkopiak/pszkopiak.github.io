@@ -16,12 +16,36 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+	<!-- Das Logo welches Fix in der Ecke sitzt und die Klasse overlay-logo verwendet -->
+<img src="images/logo-bwi.png" class="overlay-logo"></img>
+
+<div id="overlay-logo-bwi" class="overlay-image">
+    <img src="images/logo-bwi.png"></img>
+</div>
 
 <video id="video" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
 	<!--<source src="video/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'> -->
 	<!-- <source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
 	<source src="video/Sample.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> 
 </video>
+
+<style>
+	/* Die Klasse welches das Logo Fix als oberste Schicht einfügt */
+	.overlay-logo{ 
+		height: 80px;
+		position:absolute;
+		right: 30px;
+		top: 30px;
+		z-index: 1000;
+	}
+	.overlay-image{
+		display: block;
+        position: relative;
+        text-align: center;
+        margin-top: 30px;
+        z-index: 1001;
+    }
+</style>
 		
 <!-- 
   Example created by Lee Stemkoski: https://github.com/stemkoski
@@ -143,7 +167,7 @@ function initialize()
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
 			gltf.scene.scale.set(0.5,0.5,0.5)
 			markerRoot3.add(gltf.scene);
-			 //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
 		  
 	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
@@ -199,8 +223,14 @@ function animate()
 
 function onTouchStart()
 {
-	console.log("Hello darkness my old friend");
-	gltfLoaded = true;
+    var logoDisplay = document.getElementById('overlay-logo-bwi').style;
+    console.log(logoDisplay.display);
+    if(logoDisplay.display != "none"){
+        logoDisplay.display = "none";
+    }
+    else{
+        logoDisplay.display = "block";
+    }
 }
 
 </script> 
