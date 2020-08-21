@@ -137,7 +137,7 @@ function initialize()
 	})	
 
 	var loader3 = new GLTFLoader().setPath("models/");
-		  loader3.load("BWI_IT_Alpha.gltf", function (gltf) {
+		  loader3.load("BWI_IT_Animation_v8.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			mixer= new THREE.AnimationMixer(gltf.scene);			
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
