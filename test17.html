@@ -140,8 +140,8 @@ function initialize()
 		  loader3.load("Alpha_Test.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			//gltf.asset.material.alphaMode = 'MASK';
-			mixer= new THREE.AnimationMixer(gltf.scene);			
-			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
+			//mixer= new THREE.AnimationMixer(gltf.scene);			
+			//mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
 			gltf.scene.scale.set(0.5,0.5,0.5)
 			markerRoot3.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
@@ -165,7 +165,7 @@ function update()
     // update artoolkit on every frame
     if ( arToolkitSource.ready !== false )
         arToolkitContext.update( arToolkitSource.domElement );
-    if ( markerRoot3.visible ){
+  /*  if ( markerRoot3.visible ){
         if(gltfLoaded){
             mixer.update(deltaTime);
         }
@@ -175,7 +175,7 @@ function update()
         if(gltfLoaded){
             mixer.update(deltaTime);
         }
-    }   
+    }   */
 }
 
 
