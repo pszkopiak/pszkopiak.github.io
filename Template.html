@@ -69,10 +69,10 @@ function initialize()
 	})	
 
 	G1 = new GLTFLoader().setPath("models/");
-		  G1.load("video_playbutton.gltf", function (gltf) {
+		  G1.load("BWI_IT_Animation_v8.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
-			//Mi1= new THREE.AnimationMixer(gltf.scene);			
-			//Mi1.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
+			Mi1= new THREE.AnimationMixer(gltf.scene);			
+			Mi1.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
 			gltf.scene.scale.set(0.5,0.5,0.5)
 			M1.add(gltf.scene);
 			Gl1 = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
@@ -163,7 +163,7 @@ function update()
     // update artoolkit on every frame
     if ( arToolkitSource.ready !== false )
         arToolkitContext.update( arToolkitSource.domElement );
-  /*  if ( M1.visible ){
+    if ( M1.visible ){
         if(Gl1){
             Mi1.update(deltaTime);
         }
@@ -173,7 +173,7 @@ function update()
         if(G1l){
             Mi1.update(deltaTime);
         }
-    }   */
+    }   
 }
 
 
