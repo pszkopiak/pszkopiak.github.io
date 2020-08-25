@@ -75,6 +75,7 @@ var mesh2;
 var markerRoot3;
 
 var mesh3;
+var mesh4;
 
 var mixer;
 
@@ -162,8 +163,8 @@ function initialize()
 		type: 'pattern', patternUrl: "data/letterA.patt",
 	})	
 	
-	var loader1 = new GLTFLoader().setPath("models/");
-		  loader1.load("video_playbutton.gltf", function (gltf) {
+	var loader4 = new GLTFLoader().setPath("models/");
+		  loader4.load("video_playbutton.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			gltf.scene.scale.set(0.5,0.5,0.5)
 			markerRoot1.add(gltf.scene);
@@ -171,24 +172,24 @@ function initialize()
 		  });	
 	
 	
-	let pointLight1 = new THREE.PointLight( 0xffffff, 1, 100 );
+	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight1.position.set(0.5,3,2);
 	markerRoot1.add( pointLight1 );
 	
 	
-	let geometry1 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let geometry4 = new THREE.PlaneBufferGeometry(2,2, 4,4);
 
 	let video1 = document.getElementById( 'Drohnenvideo' );
-	let texture1 = new THREE.VideoTexture( video1 );
-	texture1.minFilter = THREE.LinearFilter;
-	texture1.magFilter = THREE.LinearFilter;
-	texture1.format = THREE.RGBFormat;
-	let material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
+	let texture4 = new THREE.VideoTexture( video1 );
+	texture4.minFilter = THREE.LinearFilter;
+	texture4.magFilter = THREE.LinearFilter;
+	texture4.format = THREE.RGBFormat;
+	let material4 = new THREE.MeshBasicMaterial( { map: texture4 } );
 	
-	mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.rotation.x = -Math.PI/2;
+	mesh4 = new THREE.Mesh( geometry4, material4 );
+	mesh4.rotation.x = -Math.PI/2;
 	
-	markerRoot1.add( mesh1 );
+	markerRoot1.add( mesh4 );
 	
 	
 	
