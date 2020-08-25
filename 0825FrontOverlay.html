@@ -307,8 +307,8 @@ function animate()
 
 function onTouchStart()
 {
-    var logoDisplay = document.getElementById('overlay-logo-bwi').style;
-    console.log(logoDisplay.display);
+    //var logoDisplay = document.getElementById('overlay-logo-bwi').style;
+    console.log(document.getElementById('overlay-logo-bwi').style.display);
 	/*var VideoDrohne = document.getElementById('Drohnenvideo');
 	if ( markerRoot1.visible ){
 		if(VideoDrohne.display != "none"){
@@ -322,11 +322,11 @@ function onTouchStart()
 		VideoDrohne.display = "block";
 	}*/
 	//if ( markerRoot2.visible ){
-		if(logoDisplay.display != "none"){
-			logoDisplay.display = "none";
+		if(document.getElementById('overlay-logo-bwi').style.display != "none"){
+			document.getElementById('overlay-logo-bwi').style.display = "none";
 		}
 		else{
-			logoDisplay.display = "block";
+			document.getElementById('overlay-logo-bwi').style.display = "block";
 		}
 	//}
 	//else{
