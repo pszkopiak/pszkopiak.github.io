@@ -39,15 +39,12 @@
 		z-index: 1000;
 	}
 	.overlay-image{
-		display: block;
+		display: none;
         position: relative;
         text-align: center;
         margin-top: 30px;
         z-index: 1001;
     }
-	.VideoD{
-		display: block;
-	}
 	
 </style>
 		
@@ -155,7 +152,7 @@ function initialize()
 	// setup markerRoots
 	////////////////////////////////////////////////////////////
 
-
+/*
 	// build markerControls1
 	markerRoot1 = new THREE.Group();
 	scene.add(markerRoot1);
@@ -173,7 +170,7 @@ function initialize()
 	
 	
 	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
-	pointLight1.position.set(0.5,3,2);
+	pointLight4.position.set(0.5,3,2);
 	markerRoot1.add( pointLight1 );
 	
 	
@@ -189,7 +186,7 @@ function initialize()
 	mesh4 = new THREE.Mesh( geometry4, material4 );
 	mesh4.rotation.x = -Math.PI/2;
 	
-	markerRoot1.add( mesh4 );
+	markerRoot1.add( mesh4 );*/
 	
 	
 	
@@ -267,7 +264,7 @@ function initialize()
 
 
 
-	document.getElementById('overlay-logo-bwi').style.display = "Block";
+	document.getElementById('overlay-logo-bwi').style.display = "none";
 	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
 }
 
@@ -311,7 +308,7 @@ function animate()
 function onTouchStart()
 {
     var logoDisplay = document.getElementById('overlay-logo-bwi').style;
-	var VideoDrohne = document.getElementById('Drohnenvideo');
+	/*var VideoDrohne = document.getElementById('Drohnenvideo');
     //console.log(logoDisplay.display);
 	if ( markerRoot1.visible ){
 		if(VideoDrohne.display != "none"){
@@ -323,7 +320,7 @@ function onTouchStart()
 	}
 	else{
 		VideoDrohne.display = "block";
-	}
+	}*/
 	if ( markerRoot2.visible ){
 		if(logoDisplay.display != "none"){
 			logoDisplay.display = "none";
@@ -333,7 +330,7 @@ function onTouchStart()
 		}
 	}
 	else{
-		logoDisplay.display = "block";
+		logoDisplay.display = "none";
 	}
 }
 
