@@ -154,6 +154,7 @@ function initialize()
 	// setup markerRoots
 	////////////////////////////////////////////////////////////
 
+/*
 	// build markerControls1
 	markerRoot1 = new THREE.Group();
 	scene.add(markerRoot1);
@@ -200,10 +201,7 @@ function initialize()
 		type: 'pattern', patternUrl: "data/letterB.patt",
 	})	
 	
-	
-	
-	
-	
+	*/
 	
 	// build markerControls3 
 	markerRoot3 = new THREE.Group();
@@ -211,6 +209,14 @@ function initialize()
 	let markerControls3 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot3, {
 		type: 'pattern', patternUrl: "data/letterC.patt",
 	})	
+
+
+
+
+
+
+
+
 
 	var loader3 = new GLTFLoader().setPath("models/");
 		  loader3.load("BWI_IT_Animation_v8.gltf", function (gltf) {
@@ -233,6 +239,11 @@ function initialize()
 	);
 	markerRoot3.add( pointLight );
 	
+
+
+
+
+
 	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
 }
 
@@ -275,17 +286,17 @@ function animate()
 
 function onTouchStart()
 {
-    var logoDisplay = document.getElementById('overlay-logo-bwi').style;
-	var VideoDrohne = document.getElementById('Drohnenvideo').style;
+ /*   var logoDisplay = document.getElementById('overlay-logo-bwi').style;
+	var VideoDrohne = document.getElementById('Drohnenvideo');
     //console.log(logoDisplay.display);
-	//if ( markerRoot1.visible ){
+	if ( markerRoot1.visible ){
 		if(VideoDrohne.display != "none"){
 			VideoDrohne.display = "none";
 		}
 		else{
 			VideoDrohne.display = "block";
 		}
-	//}
+	}
 	else{
 		VideoDrohne.display = "block";
 	}
@@ -299,7 +310,7 @@ function onTouchStart()
 	}
 	else{
 		logoDisplay.display = "block";
-	}
+	}*/
 }
 
 </script> 
