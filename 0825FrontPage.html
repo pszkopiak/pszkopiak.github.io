@@ -232,15 +232,15 @@ function initialize()
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
 	mesh1.position.y = 0.1;
-	mesh1.scale.set(2,2,2);
+	mesh1.scale.set(5,5,5);
 	mesh2 = new THREE.Mesh( geometry2, material2 );
-	mesh2.rotation.x = mesh1.rotation.x +0.25;
+	mesh2.rotation.x = mesh1.rotation.x +0.5;
 	mesh2.position.y = 0.2;
-	mesh2.scale.set(2,2,2);
+	mesh2.scale.set(5,5,5);
 	mesh3 = new THREE.Mesh( geometry3, material3 );
-	mesh3.rotation.x = mesh1.rotation.x +0.5;
+	mesh3.rotation.x = mesh1.rotation.x +0.75;
 	mesh3.position.y = 0.3;
-	mesh3.scale.set(2,2,2);
+	mesh3.scale.set(5,5,5);
 	
 	markerRoot3.add( mesh1 );
 	markerRoot3.add( mesh2 );
