@@ -214,11 +214,38 @@ function initialize()
 
 
 
+	let geometry1 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader1 = new THREE.TextureLoader();
+	let texture1 = loader1.load( 'images/BG.png', render );
+	let material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
+	
+	let geometry2 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader2 = new THREE.TextureLoader();
+	let texture2 = loader2.load( 'images/Personen.png', render );
+	let material2 = new THREE.MeshBasicMaterial( { map: texture2 } );
+
+	let geometry3 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader3 = new THREE.TextureLoader();
+	let texture3 = loader3.load( 'images/Typo.png', render );
+	let material3 = new THREE.MeshBasicMaterial( { map: texture3 } );
+
+	mesh1 = new THREE.Mesh( geometry1, material1 );
+	mesh1.rotation.x = -Math.PI/2;
+	mesh1.position.y = 1;
+	mesh2 = new THREE.Mesh( geometry2, material2 );
+	mesh2.rotation.x = -Math.PI/2;
+	mesh2.position.y = 5;
+	mesh3 = new THREE.Mesh( geometry3, material3 );
+	mesh3.rotation.x = -Math.PI/2;
+	mesh3.position.y = 15;
+	
+	markerRoot3.add( mesh1 );
+	markerRoot3.add( mesh2 );
+	markerRoot3.add( mesh3 );
 
 
 
-
-	var loader3 = new GLTFLoader().setPath("models/");
+	/*var loader3 = new GLTFLoader().setPath("models/");
 		  loader3.load("BWI_IT_Animation_v8.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			mixer= new THREE.AnimationMixer(gltf.scene);			
@@ -227,7 +254,7 @@ function initialize()
 			markerRoot3.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
-		  
+		  */
 	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight.position.set(0.5,3,2);
 	// create a mesh to help visualize the position of the light
@@ -254,7 +281,7 @@ function update()
     if ( arToolkitSource.ready !== false )
         arToolkitContext.update( arToolkitSource.domElement );
 
-    if ( markerRoot3.visible ){
+    /*if ( markerRoot3.visible ){
         if(gltfLoaded){
             mixer.update(deltaTime);
         }
@@ -264,7 +291,7 @@ function update()
         if(gltfLoaded){
             mixer.update(deltaTime);
         }
-    }   
+    }   */
 }
 
 
