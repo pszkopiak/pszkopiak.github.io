@@ -297,20 +297,20 @@ function update()
 function render()
 {
 	var m1x= mesh1.rotation.x;
-	var m1y= mesh1.rotation.y;
+	var m1z= mesh1.rotation.z;
 	var m2x= mesh2.rotation.x;
-	var m2y= mesh2.rotation.y;
+	var m2z= mesh2.rotation.z;
 	var m3x= mesh3.rotation.x;
-	var m3y= mesh3.rotation.y;
+	var m3z= mesh3.rotation.z;
 	mesh1.lookAt(0,0,0);
 	mesh2.lookAt(0,0,0);
 	mesh3.lookAt(0,0,0);
 	mesh1.rotation.x = m1x;
-	mesh1.rotation.y = m1y;
+	mesh1.rotation.z = m1z;
 	mesh2.rotation.x = m2x;
-	mesh2.rotation.y = m2y;
+	mesh2.rotation.z = m2z;
 	mesh3.rotation.x = m3x;
-	mesh3.rotation.y = m3y;
+	mesh3.rotation.z = m3z;
 	renderer.render( scene, camera );
 }
 
