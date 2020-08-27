@@ -296,6 +296,9 @@ function update()
 
 function render()
 {
+	mesh1.lookAt(0,0,0);
+	mesh2.lookAt(0,0,0);
+	mesh3.lookAt(0,0,0);
 	renderer.render( scene, camera );
 }
 
@@ -305,11 +308,6 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	console.log("Scene:" + scene.position);
-	console.log("Marker:" + markerRoot3.position);
-	mesh1.lookAt(camera.position);
-	mesh2.lookAt(camera.position);
-	mesh3.lookAt(camera.position);
 	update();
 	render();
 
