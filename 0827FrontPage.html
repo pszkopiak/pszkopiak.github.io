@@ -303,7 +303,7 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	markerRoot3.lookAt(camera.position);
+	scene.lookAt(camera.position);
 	update();
 	render();
 
