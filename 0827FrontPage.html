@@ -302,9 +302,9 @@ function render()
 	var m2z= mesh2.rotation.z;
 	var m3x= mesh3.rotation.x;
 	var m3z= mesh3.rotation.z;*/
-	lookAtVector(mesh1, scene);
-	lookAtVector(mesh2, scene);
-	lookAtVector(mesh3, scene);
+	lookAtVector(mesh1.position, camera.position);
+	lookAtVector(mesh2.position, camera.position);
+	lookAtVector(mesh3.position, camera.position);
 	//mesh1.lookAt(0,mesh1.position.y,0);
 	//mesh2.lookAt(0,mesh2.position.y,0);
 	//mesh3.lookAt(0,mesh3.position.y,0);
