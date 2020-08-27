@@ -305,7 +305,23 @@ function render()
 	//lookAtVector(mesh1.position, camera.position);
 	//lookAtVector(mesh2.position, camera.position);
 	//lookAtVector(mesh3.position, camera.position);
-	mesh1.lookAt(0,0,0);
+
+	const m1 = new THREE.Vector3();
+    camera.getWorldPosition(m1);
+    m1.y = mesh1.position.y
+    mesh1.lookAt(camera);
+
+	const m2 = new THREE.Vector3();
+    camera.getWorldPosition(m2);
+    m2.y = mesh2.position.y
+    mesh2.lookAt(camera);
+
+	const m3 = new THREE.Vector3();
+    camera.getWorldPosition(m3);
+    m3.y = mesh3.position.y
+    mesh3.lookAt(camera);
+
+/*	mesh1.lookAt(0,0,0);
 	mesh2.lookAt(0,0,0);
 	mesh3.lookAt(0,0,0);
 	/*mesh1.rotation.x = m1x;
@@ -337,7 +353,7 @@ function lookAtVector( sourcePoint, destPoint ) {
 
 function onTouchStart()
 {
-	console.log("HIT");
+	//console.log("HIT");
     var logoDisplay = document.getElementById('overlay-logo-bwi').style;
 	/*var VideoDrohne = document.getElementById('Drohnenvideo');
 	if ( markerRoot1.visible ){
@@ -353,20 +369,20 @@ function onTouchStart()
 	}*/
 	if ( markerRoot2.visible ){
 		
-	console.log("VISIBLE");
+	//console.log("VISIBLE");
 		if(logoDisplay.display != "none"){
 			logoDisplay.display = "none";
-			console.log("SetNone");
+			//console.log("SetNone");
 		}
 		else{
 			logoDisplay.display = "block";
-			console.log("SetBlock");
+			//console.log("SetBlock");
 		}
 	}
 	else{
-	console.log("NOT VISIBLE");
+	//console.log("NOT VISIBLE");
 		logoDisplay.display = "none";
-			console.log("Outarange");
+			//console.log("Outarange");
 	}
 }
 
