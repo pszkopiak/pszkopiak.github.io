@@ -352,6 +352,8 @@ function onTouchStart()
 		VideoDrohne.display = "block";
 	}*/
 	if ( markerRoot2.visible ){
+		
+	console.log("VISIBLE");
 		if(logoDisplay.display != "none"){
 			logoDisplay.display = "none";
 			console.log("SetNone");
@@ -362,6 +364,7 @@ function onTouchStart()
 		}
 	}
 	else{
+	console.log("NOT VISIBLE");
 		logoDisplay.display = "none";
 			console.log("Outarange");
 	}
