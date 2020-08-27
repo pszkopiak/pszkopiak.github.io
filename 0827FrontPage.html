@@ -305,9 +305,15 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
+<<<<<<< HEAD
 	markerRoot3.mesh1.lookAt(camera.position);
 	markerRoot3.mesh2.lookAt(camera.position);
 	markerRoot3.mesh3.lookAt(camera.position);
+=======
+	scene.markerRoot3.mesh1.lookAt(camera.position);
+	scene.markerRoot3.mesh2.lookAt(camera.position);
+	scene.markerRoot3.mesh3.lookAt(camera.position);
+>>>>>>> parent of 59fde3c... Update 0827FrontPage.html
 	update();
 	render();
 
