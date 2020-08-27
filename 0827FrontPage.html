@@ -296,21 +296,24 @@ function update()
 function render()
 {
 	//var m1v = new THREE.Vector3 (0, mesh1.position.y,0);
-	var m1x= mesh1.rotation.x;
+	/*var m1x= mesh1.rotation.x;
 	var m1z= mesh1.rotation.z;
 	var m2x= mesh2.rotation.x;
 	var m2z= mesh2.rotation.z;
 	var m3x= mesh3.rotation.x;
-	var m3z= mesh3.rotation.z;
+	var m3z= mesh3.rotation.z;*/
+	lookAtVector(mesh1, scene);
+	lookAtVector(mesh2, scene);
+	lookAtVector(mesh3, scene);
 	//mesh1.lookAt(0,mesh1.position.y,0);
 	//mesh2.lookAt(0,mesh2.position.y,0);
 	//mesh3.lookAt(0,mesh3.position.y,0);
-	mesh1.rotation.x = m1x;
+	/*mesh1.rotation.x = m1x;
 	mesh1.rotation.z = m1z;
 	mesh2.rotation.x = m2x;
 	mesh2.rotation.z = m2z;
 	mesh3.rotation.x = m3x;
-	mesh3.rotation.z = m3z;
+	mesh3.rotation.z = m3z;*/
 	renderer.render( scene, camera );
 }
 
@@ -323,6 +326,13 @@ function animate()
 	update();
 	render();
 
+}
+
+function lookAtVector( sourcePoint, destPoint ) {
+    return new THREE.Quaternion().setFromRotationMatrix(
+        new THREE.Matrix4()
+            .lookAt( sourcePoint, destPoint, new THREE.Vector3( 0, 0, -1 ) )
+    );
 }
 
 function onTouchStart()
