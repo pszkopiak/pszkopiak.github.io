@@ -80,7 +80,7 @@ var mixer;
 
 var gltfLoaded;
 
-let pointLight;
+
 
 initialize();
 animate();
@@ -261,7 +261,7 @@ function initialize()
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
 		  */
-	pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
+	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight.position.set(0.5,3,2);
 	markerRoot3.add( pointLight );
 	
@@ -305,15 +305,9 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-<<<<<<< HEAD
-	markerRoot3.mesh1.lookAt(camera.position);
-	markerRoot3.mesh2.lookAt(camera.position);
-	markerRoot3.mesh3.lookAt(camera.position);
-=======
 	scene.markerRoot3.mesh1.lookAt(camera.position);
 	scene.markerRoot3.mesh2.lookAt(camera.position);
 	scene.markerRoot3.mesh3.lookAt(camera.position);
->>>>>>> parent of 59fde3c... Update 0827FrontPage.html
 	update();
 	render();
 
