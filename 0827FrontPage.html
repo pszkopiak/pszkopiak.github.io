@@ -80,6 +80,8 @@ var mixer;
 
 var gltfLoaded;
 
+let pointLight;
+
 initialize();
 animate();
 
@@ -259,7 +261,7 @@ function initialize()
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
 		  */
-	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight.position.set(0.5,3,2);
 	markerRoot3.add( pointLight );
 	
