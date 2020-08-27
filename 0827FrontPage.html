@@ -305,7 +305,8 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	console.log(scene.position);
+	console.log("Scene:" + scene.position);
+	console.log("Marker:" + markerRoot3.position);
 	mesh1.lookAt(camera.position);
 	mesh2.lookAt(camera.position);
 	mesh3.lookAt(camera.position);
