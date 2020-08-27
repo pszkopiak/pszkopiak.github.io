@@ -308,9 +308,9 @@ function render()
 
 	const m1 = new THREE.Vector3();
     camera.getWorldPosition(m1);
+	console.log(m1);
     m1.y = mesh1.position.y
     mesh1.lookAt(m1);
-	console.log(camera.getWorldPosition());
 	//console.log("position" + camera.position);
 	const m2 = new THREE.Vector3();
     camera.getWorldPosition(m2);
