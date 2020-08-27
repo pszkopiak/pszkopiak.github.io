@@ -309,17 +309,17 @@ function render()
 	const m1 = new THREE.Vector3();
     camera.getWorldPosition(m1);
     m1.y = mesh1.position.y
-    mesh1.lookAt(camera);
+    mesh1.lookAt(m1);
 
 	const m2 = new THREE.Vector3();
     camera.getWorldPosition(m2);
     m2.y = mesh2.position.y
-    mesh2.lookAt(camera);
+    mesh2.lookAt(m2);
 
 	const m3 = new THREE.Vector3();
     camera.getWorldPosition(m3);
     m3.y = mesh3.position.y
-    mesh3.lookAt(camera);
+    mesh3.lookAt(m3);
 
 /*	mesh1.lookAt(0,0,0);
 	mesh2.lookAt(0,0,0);
