@@ -40,8 +40,8 @@
 	}
 	.overlay-image{
 		display: block;
-		position:absolute;
-		left: 0px;
+        position: relative;
+        text-align: center;
         margin-top: 30px;
         z-index: 1001;
     }
@@ -305,9 +305,9 @@ function render()
 	//lookAtVector(mesh1.position, camera.position);
 	//lookAtVector(mesh2.position, camera.position);
 	//lookAtVector(mesh3.position, camera.position);
-	//mesh1.lookAt(0,0,0);
-	//mesh2.lookAt(0,0,0);
-	//mesh3.lookAt(0,0,0);
+	mesh1.lookAt(0,0,0);
+	mesh2.lookAt(0,0,0);
+	mesh3.lookAt(0,0,0);
 	/*mesh1.rotation.x = m1x;
 	mesh1.rotation.z = m1z;
 	mesh2.rotation.x = m2x;
