@@ -339,7 +339,6 @@ function onTouchStart()
 {
     var logoDisplay = document.getElementById('overlay-logo-bwi').style;
 	/*var VideoDrohne = document.getElementById('Drohnenvideo');
-    //console.log(logoDisplay.display);
 	if ( markerRoot1.visible ){
 		if(VideoDrohne.display != "none"){
 			VideoDrohne.display = "none";
@@ -354,13 +353,16 @@ function onTouchStart()
 	if ( markerRoot2.visible ){
 		if(logoDisplay.display != "none"){
 			logoDisplay.display = "none";
+			console.log("SetNone");
 		}
 		else{
 			logoDisplay.display = "block";
+			console.log("SetBlock");
 		}
 	}
 	else{
 		logoDisplay.display = "none";
+			console.log("Outarange");
 	}
 }
 
