@@ -366,18 +366,18 @@ function onTouchStart()
 		if(mesh0.visible){
 			mesh0.visible = false;
 			VideoDrohne.pause();
-			loader0.visible = true;
+			loader0.gltf.scene.scale.set(0.5,0.5,0.5);
 		}
 		else{
 			mesh0.visible = true;
 			VideoDrohne.play();
-			loader0.visible = false;
+			loader0.gltf.scene.scale.set(0.01,0.01,0.01);
 		}
 	}
 	else{
 		mesh0.visible = false;
 		VideoDrohne.pause();
-		loader0.visible = true;
+		loader0.gltf.scene.scale.set(0.5,0.5,0.5);
 	}
 	if ( markerRoot2.visible ){
 		
