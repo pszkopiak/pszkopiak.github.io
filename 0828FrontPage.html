@@ -82,7 +82,7 @@ var mixer;
 
 var gltfLoaded;
 
-
+var loader0;
 
 initialize();
 animate();
@@ -166,7 +166,7 @@ function initialize()
 		type: 'pattern', patternUrl: "data/letterA.patt",
 	})	
 	
-	var loader0 = new GLTFLoader().setPath("models/");
+	loader0 = new GLTFLoader().setPath("models/");
 		  loader0.load("BWI_IT_Animation_v8.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
 			gltf.scene.scale.set(0.5,0.5,0.5)
@@ -366,15 +366,18 @@ function onTouchStart()
 		if(mesh0.visible){
 			mesh0.visible = false;
 			VideoDrohne.pause();
+			loader0.visible = true;
 		}
 		else{
 			mesh0.visible = true;
 			VideoDrohne.play();
+			loader0.visible = false;
 		}
 	}
 	else{
 		mesh0.visible = false;
 		VideoDrohne.pause();
+		loader0.visible = true;
 	}
 	if ( markerRoot2.visible ){
 		
