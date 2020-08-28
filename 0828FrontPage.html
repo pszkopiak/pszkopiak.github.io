@@ -194,7 +194,7 @@ function initialize()
 	
 	markerRoot1.add( mesh0 );
 	
-	mesh0.visible = "false";
+	mesh0.visible = false;
 	video0.pause();
 	
 	
@@ -364,16 +364,16 @@ function onTouchStart()
 	var VideoDrohne = document.getElementById('Drohnenvideo');
 	if ( markerRoot1.visible ){
 		if(mesh0.visible){
-			mesh0.visible = "false";
+			mesh0.visible = false;
 			VideoDrohne.pause();
 		}
 		else{
-			mesh0.visible = "true";
+			mesh0.visible = true;
 			VideoDrohne.play();
 		}
 	}
 	else{
-		mesh0.visible = "false";
+		mesh0.visible = false;
 		VideoDrohne.pause();
 	}
 	if ( markerRoot2.visible ){
