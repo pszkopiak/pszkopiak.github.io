@@ -167,9 +167,9 @@ function initialize()
 	})	
 	
 	loader0 = new GLTFLoader().setPath("models/");
-		  loader0.load("BWI_IT_Animation_v8.gltf", function (gltf) {
+		  loader0.load("video_playbutton", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
-			gltf.scene.scale.set(0.5,0.5,0.5)
+			gltf.scene.scale.set(2.5,2.5,2.5)
 			markerRoot1.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });	
@@ -191,6 +191,7 @@ function initialize()
 	
 	mesh0 = new THREE.Mesh( geometry0, material0 );
 	mesh0.rotation.x = -Math.PI/2;
+	mesh0.position.y = 1;
 	
 	markerRoot1.add( mesh0 );
 	
@@ -366,18 +367,15 @@ function onTouchStart()
 		if(mesh0.visible){
 			mesh0.visible = false;
 			VideoDrohne.pause();
-			markerRoot1.gltf.scene.scale.set(0.5,0.5,0.5);
 		}
 		else{
 			mesh0.visible = true;
 			VideoDrohne.play();
-			markerRoot1.gltf.scene.scale.set(0.01,0.01,0.01);
 		}
 	}
 	else{
 		mesh0.visible = false;
 		VideoDrohne.pause();
-		markerRoot1.gltf.scene.scale.set(0.5,0.5,0.5);
 	}
 	if ( markerRoot2.visible ){
 		
