@@ -349,11 +349,11 @@ function animate()
 	diff = totalTime % 0.5 ;
 
 	update();
-	if(diff < 0.1){
+	if(diff < 0.01){
 		render();
 		console.log("rendered");
+		console.log(totalTime);
 	}
-	console.log(totalTime);
 }
 
 function lookAtVector( sourcePoint, destPoint ) {
