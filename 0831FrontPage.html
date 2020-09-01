@@ -346,10 +346,10 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	diff = totalTime % 0.1 ;
+	diff = totalTime % 0.05 ;
 
 	update();
-	if(diff < 0.01){
+	if(diff < 0.001){
 		render();
 		console.log("rendered");
 		console.log(totalTime);
