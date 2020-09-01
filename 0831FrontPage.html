@@ -84,6 +84,8 @@ var gltfLoaded;
 
 var loader0;
 
+var diff;
+
 initialize();
 animate();
 
@@ -344,8 +346,13 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
+	diff = totalTime % 0.5 ;
+
 	update();
-	render();
+	if(diff < 0.1){
+		render();
+		console.log("rendered");
+	}
 	console.log(totalTime);
 }
 
