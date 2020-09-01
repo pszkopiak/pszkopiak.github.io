@@ -346,7 +346,7 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	diff = totalTime % 0.05 ;
+	diff = totalTime % 0.1 ;
 
 	update();
 	if(diff < 0.01){
