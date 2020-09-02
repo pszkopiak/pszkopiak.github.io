@@ -169,9 +169,9 @@ function initialize()
 	})	
 	
 	loader0 = new GLTFLoader().setPath("models/");
-		  loader0.load("video_playbutton_v5.gltf", function (gltf) {
+		  loader0.load("video_playbutton_v6.gltf", function (gltf) {
 			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
-			gltf.scene.scale.set(100,100,100)
+			gltf.scene.scale.set(10,10,10)
 			markerRoot1.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });	
