@@ -220,6 +220,12 @@ function initialize()
 		type: 'pattern', patternUrl: "data/pattern-augmented_reality.patt",
 	})	
 
+	// build markerControls4
+	markerRoot4 = new THREE.Group();
+	scene.add(markerRoot4);
+	let markerControls4 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot4, {
+		type: 'pattern', patternUrl: "data/pattern-untersuchung.patt",
+	})	
 
 
 
@@ -275,7 +281,18 @@ function initialize()
 	
 
 
+	let geometry4 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader4 = new THREE.TextureLoader();
+	let texture4 = loader4.load( 'images/andrea4.gif', render );
+	let material4 = new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.99,map: texture4 } );
 
+	mesh4 = new THREE.Mesh( geometry4, material4 );
+	mesh4.rotation.x = -Math.PI/2;
+	mesh4.position.y = 0.1;
+	mesh4.scale.set(1,1,1);
+	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight4.position.set(0.5,3,2);
+	markerRoot4.add( pointLight4 );
 
 	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
 }
