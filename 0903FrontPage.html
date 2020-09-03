@@ -286,7 +286,7 @@ function initialize()
 	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight.position.set(0.5,3,2);
 	markerRoot3.add( pointLight );
-	
+
 
 	let geometry4 = new THREE.PlaneBufferGeometry(2,2, 4,4);
 	let video4 = document.getElementById( 'Seite4Video' );
@@ -300,6 +300,8 @@ function initialize()
 	mesh4.rotation.x = -Math.PI/2;
 	mesh4.position.y = 0.1;
 	mesh4.scale.set(1,1,1);
+
+	markerRoot4.add( mesh4 );
 
 	loader41 = new GLTFLoader().setPath("models/");
 		  loader41.load("video_playbutton_v7.gltf", function (gltf) {
