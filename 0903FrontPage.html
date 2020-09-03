@@ -5,7 +5,6 @@
 	<!-- include three.js library -->
 	<script src='js/three.js'></script>
 	<script type="module" src='js/GLTFLoader.js'></script>
-	<script type="module" src='js/gif-loader.js'></script>
 	<!-- include jsartookit -->
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
@@ -27,6 +26,12 @@
 
 <video id="Drohnenvideo" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
 	<source src="video/bwi_ani_durchflug_quad.mp4">
+</video>
+<video id="Seite4Video" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+	<source src="video/andrea_movie.mp4">
+</video>
+<video id="Seite8Video" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+	<source src="video/heinz_movie.mp4">
 </video>
 
 
@@ -282,19 +287,27 @@ function initialize()
 	markerRoot3.add( pointLight );
 	
 
-
-	let geometry4 = new THREE.PlaneBufferGeometry(1,1, 4,4);
-	let loader4 = new GifLoader();
-	let texture4 = loader4.load( 'images/andrea4.gif', render );
-	let material4 = new THREE.MeshBasicMaterial( { transparent: true,map: texture4 } );
+	let geometry4 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video4 = document.getElementById( 'Seite4Video' );
+	let texture4 = new THREE.VideoTexture( video4 );
+	texture4.minFilter = THREE.LinearFilter;
+	texture4.magFilter = THREE.LinearFilter;
+	texture4.format = THREE.RGBFormat;
+	let material4 = new THREE.MeshBasicMaterial( { map: texture4 } );
 
 	mesh4 = new THREE.Mesh( geometry4, material4 );
 	mesh4.rotation.x = -Math.PI/2;
 	mesh4.position.y = 0.1;
 	mesh4.scale.set(1,1,1);
+
 	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight4.position.set(0.5,3,2);
 	markerRoot4.add( pointLight4 );
+
+
+
+
+
 
 	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
 }
