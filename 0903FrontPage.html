@@ -300,6 +300,16 @@ function initialize()
 	mesh4.position.y = 0.1;
 	mesh4.scale.set(1,1,1);
 
+	loader41 = new GLTFLoader().setPath("models/");
+		  loader41.load("video_playbutton_v7.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(0,0,0)
+			markerRoot4.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+
 	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight4.position.set(0.5,3,2);
 	markerRoot4.add( pointLight4 );
@@ -375,6 +385,7 @@ function onTouchStart()
 
 
 	var VideoDrohne = document.getElementById('Drohnenvideo');
+	var VideoAndrea = document.getElementById('Seite4Video');
 	if ( markerRoot1.visible ){
 		if(mesh0.visible){
 			mesh0.visible = false;
@@ -389,6 +400,8 @@ function onTouchStart()
 		mesh0.visible = false;
 		VideoDrohne.pause();
 	}
+
+
 	if ( markerRoot2.visible ){
 		
 		if(logoDisplay.display != "none"){
@@ -400,6 +413,22 @@ function onTouchStart()
 	}
 	else{
 		logoDisplay.display = "none";
+	}
+
+
+	if ( markerRoot4.visible ){
+		if(mesh4.visible){
+			mesh4.visible = false;
+			VideoAndrea.pause();
+		}
+		else{
+			mesh4.visible = true;
+			VideoAndrea.play();
+		}
+	}
+	else{
+		mesh4.visible = false;
+		VideoAndrea.pause();
 	}
 }
 
