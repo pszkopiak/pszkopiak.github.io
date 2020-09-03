@@ -5,6 +5,7 @@
 	<!-- include three.js library -->
 	<script src='js/three.js'></script>
 	<script type="module" src='js/GLTFLoader.js'></script>
+	<script src='js/gif-loader.js'></script>
 	<!-- include jsartookit -->
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
@@ -283,9 +284,9 @@ function initialize()
 
 
 	let geometry4 = new THREE.PlaneBufferGeometry(1,1, 4,4);
-	let loader4 = new THREE.TextureLoader();
+	let loader4 = new GifLoader();
 	let texture4 = loader4.load( 'images/andrea4.gif', render );
-	let material4 = new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.99,map: texture4 } );
+	let material4 = new THREE.MeshBasicMaterial( { transparent: true,map: texture4 } );
 
 	mesh4 = new THREE.Mesh( geometry4, material4 );
 	mesh4.rotation.x = -Math.PI/2;
