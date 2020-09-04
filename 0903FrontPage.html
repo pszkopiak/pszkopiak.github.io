@@ -42,14 +42,14 @@
 		position:absolute;
 		right: 0px;
 		top: 30px;
-		z-index: 0;
+		z-index: 1;
 	}
 	.overlay-image{
 		display: none;
         position: relative;
         text-align: center;
         margin-top: 30px;
-        z-index: 0;
+        z-index: 2;
     }
 /*	.VideoD{
 		display: block;
@@ -84,6 +84,9 @@ var markerRoot3;
 var markerRoot4;
 var mesh3;
 var mesh4;
+
+var markerRoot8;
+var mesh8;
 
 var mixer;
 
@@ -192,7 +195,7 @@ function initialize()
 			mixer= new THREE.AnimationMixer(gltf.scene);			
 			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
 			gltf.scene.scale.set(1,1,1)
-			gltf.scene.position.set(-0.75,0,1.5)
+			gltf.scene.position.set(-0.75,1.25,1.5)
 			markerRoot1.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });
@@ -344,6 +347,43 @@ function initialize()
 
 
 
+	let geometry8 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video8 = document.getElementById( 'Seite8Video' );
+	let texture8 = new THREE.VideoTexture( video8 );
+	texture8.minFilter = THREE.LinearFilter;
+	texture8.magFilter = THREE.LinearFilter;
+	texture8.format = THREE.RGBFormat;
+	let material8 = new THREE.MeshBasicMaterial( { map: texture8 } );
+
+	mesh8 = new THREE.Mesh( geometry8, material8 );
+	mesh8.rotation.x = -Math.PI/2;
+	mesh8.position.y = 1;
+	mesh8.scale.set(1,1,1);
+
+	markerRoot8.add( mesh8 );
+
+	loader8 = new GLTFLoader().setPath("models/");
+		  loader8.load("video_playbutton_v7.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(0,0,0)
+			markerRoot8.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+
+	let pointLight8 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight8.position.set(0.5,3,2);
+	markerRoot8.add( pointLight8 );
+
+
+	mesh8.visible = false;
+	video8.pause();
+
+
+
+
+
 
 	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
 }
@@ -417,6 +457,7 @@ function onTouchStart()
 
 	var VideoDrohne = document.getElementById('Drohnenvideo');
 	var VideoAndrea = document.getElementById('Seite4Video');
+	var VideoHeinz = document.getElementById('Seite8Video');
 	if ( markerRoot1.visible ){
 		if(mesh0.visible){
 			mesh0.visible = false;
@@ -460,6 +501,21 @@ function onTouchStart()
 	else{
 		mesh4.visible = false;
 		VideoAndrea.pause();
+	}
+
+	if ( markerRoot8.visible ){
+		if(mesh8.visible){
+			mesh8.visible = false;
+			VideoHeinz.pause();
+		}
+		else{
+			mesh8.visible = true;
+			VideoHeinz.play();
+		}
+	}
+	else{
+		mesh8.visible = false;
+		VideoHeinz.pause();
 	}
 }
 
