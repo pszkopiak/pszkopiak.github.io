@@ -259,7 +259,12 @@ function initialize()
 		type: 'pattern', patternUrl: "data/pattern-untersuchung.patt",
 	})	
 
-
+	// build markerControls8
+	markerRoot8 = new THREE.Group();
+	scene.add(markerRoot8);
+	let markerControls8 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot8, {
+		type: 'pattern', patternUrl: "data/pattern-job_zusage.patt",
+	})	
 
 
 	let geometry1 = new THREE.PlaneBufferGeometry(1,1, 4,4);
