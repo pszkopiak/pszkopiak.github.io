@@ -91,6 +91,7 @@ var gltfLoaded;
 
 var loader0;
 var loader41;
+var loader21;
 
 var diff;
 
@@ -184,7 +185,17 @@ function initialize()
 			markerRoot1.add(gltf.scene);
 			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
 		  });	
-	
+
+	var loader03 = new GLTFLoader().setPath("models/");
+		  loader03.load("hardfact_01.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			mixer= new THREE.AnimationMixer(gltf.scene);			
+			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(-0.75,0,1.5)
+			markerRoot1.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });
 	
 	let pointLight0 = new THREE.PointLight( 0xffffff, 1, 100 );
 	pointLight0.position.set(0.5,3,2);
@@ -218,7 +229,14 @@ function initialize()
 	let markerControls2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
 		type: 'pattern', patternUrl: "data/pattern-top_10.patt",
 	})	
-	
+	loader21 = new GLTFLoader().setPath("models/");
+		  loader21.load("BWI_AR_Mockup.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(0,0,0)
+			markerRoot2.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
 	
 	
 	// build markerControls3 
@@ -334,7 +352,12 @@ function update()
     if ( arToolkitSource.ready !== false )
         arToolkitContext.update( arToolkitSource.domElement );
 
-    /*if ( markerRoot3.visible ){
+	if ( mesh0.visible ){
+        if(gltfLoaded){
+            mixer.update(deltaTime);
+        }
+    }
+    /*if ( mesh0.visible ){
         if(gltfLoaded){
             mixer.update(deltaTime);
         }
