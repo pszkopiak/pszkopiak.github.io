@@ -440,11 +440,11 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
+	update();
 	render();
 	
 	/*diff = totalTime % 0.04 ;
 
-	update();
 	if(diff < 0.01){
 		render();
 		//console.log("rendered");
