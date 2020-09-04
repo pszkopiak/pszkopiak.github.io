@@ -440,14 +440,16 @@ function animate()
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
-	diff = totalTime % 0.04 ;
+	render();
+	
+	/*diff = totalTime % 0.04 ;
 
 	update();
 	if(diff < 0.01){
 		render();
 		//console.log("rendered");
 		//console.log(totalTime);
-	}
+	}*/
 }
 
 function lookAtVector( sourcePoint, destPoint ) {
