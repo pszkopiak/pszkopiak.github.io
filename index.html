@@ -1,251 +1,497 @@
-<html>
+<!DOCTYPE html>
 <head>
-<title>Three.js and AR.js - examples</title>
-<link rel=stylesheet href="css/index.css"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>BWI-AR</title>
+	<!-- include three.js library -->
+	<script src='js/three.js'></script>
+	<script type="module" src='js/GLTFLoader.js'></script>
+	<!-- include jsartookit -->
+	<script src="jsartoolkit5/artoolkit.min.js"></script>
+	<script src="jsartoolkit5/artoolkit.api.js"></script>
+	<!-- include threex.artoolkit -->
+	<script src="threex/threex-artoolkitsource.js"></script>
+	<script src="threex/threex-artoolkitcontext.js"></script>
+	<script src="threex/threex-arbasecontrols.js"></script>
+	<script src="threex/threex-armarkercontrols.js"></script>
 </head>
-<body>
 
-<div class="bigTitle">Three.js and AR.js Examples</div>
-<hr>
-The goal of this collection is to provide a set of basic and instructive examples that introduce the various features in the Javascript-based Augmented Reality (AR) library, 
-<a class="toc" href="https://github.com/jeromeetienne/AR.js">AR.js</a>. Advanced <a class="toc" href="https://threejs.org/">three.js</a> examples are also included.
-<br/><br/>
-Viewing the AR examples will require a device with a camera and one or both of the <a class="toc" href="markers/hiro.png">Hiro</a> and <a class="toc" href="markers/kanji.png">Kanji</a> marker patterns (either printed or displayed on a second device).
-<br/><br/>
-Source code hosted at <a class="toc" href="https://github.com/stemkoski/AR-Examples">GitHub</a>.
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+	<!-- Das Logo welches Fix in der Ecke sitzt und die Klasse overlay-logo verwendet -->
+<img src="images/logo-bwi.png" class="overlay-logo"></img>
 
-<hr/>
-
-<div class="fancy">
-<a href="hello-cube.html">
-<img src="images/demo/hello-cube.png" class="superImage" />
-<br/>Basic Cube Test</a>
-<p class ="superText">A basic scene that superimposes a cube on a Hiro marker.
-</p>
+<!-- Das Overlay welches per klick aufgerufen werden soll -->
+<div id="overlay-logo-bwi" class="overlay-image">
+    <img src="images/overlay_test.png"></img>
 </div>
 
-<div class="fancy">
-<a href="custom-patterns.html">
-<img src="images/demo/custom-patterns.png" class="superImage" />
-<br/>Many Cubes</a>
-<p class ="superText">A scene that superimposes different colored cubes on a Hiro, Kanji, and letter markers.
-</p>
-</div>
 
-<div class="fancy">
-<a href="smoothed-controls.html">
-<img src="images/demo/hello-cube.png" class="superImage" />
-<br/>Smoothed Controls</a>
-<p class ="superText">The basic scene, recreated using "smoothed controls", which interpolates the marker location from frame to frame at an adjustable rate.
-</p>
-</div>
+<!-- Video für seite 1, 5 und 8 in der reihenfolge -->
+<video id="Drohnenvideo" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+	<source src="video/bwi_ani_durchflug_quad.mp4">
+</video>
+<video id="Seite5Video" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+	<source src="video/andrea_movie.mp4">
+</video>
+<video id="Seite8Video" class="VideoD" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+	<source src="video/heinz_movie.mp4">
+</video>
 
-<div class="fancy">
-<a href="texture.html">
-<img src="images/demo/texture.png" class="superImage" />
-<br/>Image Texture</a>
-<p class ="superText">An image is positioned to cover a Hiro marker.
-</p>
-</div>
 
-<div class="fancy">
-<a href="globe.html">
-<img src="images/demo/globe.png" class="superImage" />
-<br/>Rotating Globe</a>
-<p class ="superText">A rotating globe (illuminated by a point light) is positioned above a Hiro marker.
-</p>
-</div>
-
-<div class="fancy">
-<a href="video.html">
-<img src="images/demo/video.png" class="superImage" />
-<br/>Video Texture</a>
-<p class ="superText">A flat plane, with a video for a texture, is positioned to cover a Hiro marker.
-</p>
-</div>
-
-<div class="fancy">
-<a href="shader.html">
-<img src="images/demo/shader.png" class="superImage" />
-<br/>Shader</a>
-<p class ="superText">A flat plane moves up and down above a Hiro marker; position and tint color are controlled by vertex and fragment shaders.
-</p>
-</div>
-
-<div class="fancy">
-<a href="model.html">
-<img src="images/demo/model.png" class="superImage" />
-<br/>Loading 3D Models</a>
-<p class ="superText">A 3D model (obj and mtl files) are loaded and displayed above a Hiro marker.
-</p>
-</div>
-
-<div class="fancy">
-<a href="hole-box.html">
-<img src="images/demo/hole-box.png" class="superImage" />
-<br/>Hole in the Floor (Box)</a>
-<p class ="superText">A "hole in the floor" effect. Uses a box geometry to mask the hidden parts of the hole.
-</p>
-</div>
-
-<div class="fancy">
-<a href="hole-plane.html">
-<img src="images/demo/hole-box.png" class="superImage" />
-<br/>Hole in the Floor (Plane)</a>
-<p class ="superText">Another "hole in the floor" effect, using a plane geometry to mask the hidden parts of the hole.
-</p>
-</div>
-
-<div class="fancy">
-<a href="hole-ring.html">
-<img src="images/demo/hole-ring.png" class="superImage" />
-<br/>Hole in the Floor (Ring)</a>
-<p class ="superText">A cylindrical "hole in the floor" effect, using a ring geometry to mask the hidden parts of the hole.
-</p>
-</div>
-
-<div class="fancy">
-<a href="basic-scene.html" target="_blank">
-<img src="images/demo/basic-scene.png" class="superImage" />
-<br/>Basic Scene</a>
-<p class ="superText"> A basic scene created with only Three.js (no AR), useful for prototyping ideas before adding in AR components. </p>
-</div>
-
-<div class="fancy">
-<a href="water-effect.html" target="_blank">
-<img src="images/demo/water-effect.png" class="superImage" />
-<br/>Water Effect (no AR)</a>
-<p class ="superText"> An animated effect (using shaders) that looks like water flowing 
-out from a central point and being absorbed into the floor. (No AR.)</p>
-</div>
-
-<div class="fancy">
-<a href="water-effect-AR.html" target="_blank">
-<img src="images/demo/water-effect-AR.png" class="superImage" />
-<br/>Water Effect (AR version)</a>
-<p class ="superText"> An animated effect (using shaders) that looks like water flowing 
-out from a cylindrical hole (displayed above a Hiro marker), and being absorbed into the floor. 
-<br/>Video preview <a class="toc" href="https://www.youtube.com/watch?v=3DfcD5APnEU">here</a>. </p>
-</div>
-
-<div class="fancy">
-<a href="keyboard-mesh-move.html" target="_blank">
-<img src="images/demo/mesh-movement.png" class="superImage" />
-<br/>Keyboard-Based Object Movement</a>
-<p class ="superText"> Move a cube around the screen with the keyboard. Controls (<a href="images/movement-controls.png">image</a>): <br>W/A/S/D -- move Forward/Left/Backward/Right (standard), <br>Q/E -- rotate Left/Right, <br>R/F -- move Up/Down (think: <b>R</b>ise/<b>F</b>all), <br>T/G -- tilt Up/Down (think: look at <b>T</b>ower/<b>G</b>round).</p>
-</div>
-
-<div class="fancy">
-<a href="keyboard-camera-move.html" target="_blank">
-<img src="images/demo/camera-movement.png" class="superImage" />
-<br/>Keyboard-Based Camera Movement</a>
-<p class ="superText"> Move a camera around the screen with the keyboard. <br>Uses same controls as Object Movement example. </p>
-</div>
-
-<div class="fancy">
-<a href="portal-half-keyboard-test.html" target="_blank">
-<img src="images/demo/portal-half-keyboard-test.png" class="superImage" />
-<br/>Portal Test</a>
-<p class ="superText"> Creating a "portal to another world" effect. Camera moves using same controls as Object Movement example. Only visible from one side. 
-<br/>Not very robust -- see the following portal examples instead.</p>
-</div>
-
-<div class="fancy">
-<a href="stencil-test.html" target="_blank">
-<img src="images/demo/stencil-test.png" class="superImage" />
-<br/>Stencil Buffer Test</a>
-<p class ="superText"> A simple example that uses layers and the stencil buffer to render part of the scene
-onto a plane in the scene. Camera moves using same controls as Object Movement example. Useful for understanding portal view example. </p>
-</div>
-
-<div class="fancy">
-<a href="clipping-planes.html" target="_blank">
-<img src="images/demo/clipping-planes.png" class="superImage" />
-<br/>Clipping Planes</a>
-<p class ="superText"> A simple example that sets up a clipping plane (aligned with a plane mesh) to limit the volume of the scene that is rendered. Useful for understanding portal view example. </p>
-</div>
-
-<div class="fancy">
-<a href="portal-view.html" target="_blank">
-<img src="images/demo/portal-view.png" class="superImage" />
-<br/>Portal View</a>
-<p class ="superText"> A "portal to another world" effect. Portal visible through both sides. 
-<br/>Camera moves using same controls as Object Movement example; also, press 1, 2, or 3 to see the view from different cameras. 
-<br/>Uses stencil buffer and clipping planes for accurate rendering. 
- </p>
-</div>
-
-<div class="fancy">
-<a href="portal-view-AR.html" target="_blank">
-<img src="images/demo/portal-view-AR.png" class="superImage" />
-<br/>Portal View (AR Version)</a>
-<p class ="superText"> An augmented reality version of the "portal to another world" effect. Portal renders above a Kanji marker.
-<br/>Video preview <a class="toc" href="https://www.youtube.com/watch?v=-gZ3Kv9juYg">here</a>. </p>
-</div>
-
-<div class="fancy">
-<a href="magic-cube.html" target="_blank">
-<img src="images/demo/magic-cube.png" class="superImage" />
-<br/>Magic Cube Effect</a>
-<p class ="superText"> Creates a "magic cube effect" that overlays a cube covered with six AR markers <a class="toc" href="markers/cube.png">in this pattern</a>. 
-<br/>Video preview <a class="toc" href="https://www.youtube.com/watch?v=ZI6oJJFgACM">here</a>. </p>
-</div>
-
-<div class="fancy">
-<a href="globe-multi-marker.html" target="_blank">
-<img src="images/demo/globe-multi-marker.png" class="superImage" />
-<br/>Globe with Multiple Markers</a>
-<p class ="superText"> Similar to the Rotating Globe example: places a globe over a Kanji marker. If Kanji marker is blocked, uses other markers (<a class="toc" href="markers/letterA.png">letter A</a> and <a class="toc" href="markers/letterB.png">letter B</a>) to position the globe. </p>
-</div>
-
-<div class="fancy">
-<a href="refraction.html" target="_blank">
-<img src="images/demo/refraction.png" class="superImage" />
-<br/>Refraction</a>
-<p class ="superText"> Creates a rotating torus knot above a Kanji marker. The surface of the knot refracts the scene behind it.
-<br/>Video preview <a class="toc" href="https://www.youtube.com/watch?v=8-YnBk1LL-8">here</a>. 
-</p>
-</div>
-
-<div class="fancy">
-<a href="shadow.html" target="_blank">
-<img src="images/demo/shadow.png" class="superImage" />
-<br/>Shadow</a>
-<p class ="superText"> Creates a rotating torus knot above a Kanji marker. The knot casts a shadow onto the plane containing the marker. </p>
-</div>
-
-<div class="fancy">
-<a href="shadow-balls.html" target="_blank">
-<img src="images/demo/shadow-balls.png" class="superImage" />
-<br/>Shadow Balls</a>
-<p class ="superText"> Creates four colored bouncing basketballs around a Kanji marker. The balls cast shadows onto the plane containing the marker. </p>
-</div>
-
-<div class="fancy">
-<a href="parabolic-path.html" target="_blank">
-<img src="images/demo/parabolic-path.png" class="superImage" />
-<br/>Parabolic Path</a>
-<p class ="superText"> A basketball launches from a <a class="toc" href="markers/letterA.png">Letter-A</a> marker and falls towards a <a class="toc" href="markers/letterB.png">Letter-B</a> marker, following a parabolic path. The ball casts shadows, and a clipping plane (see above example) is used
-to make the ball disappear into the marker. </p>
-</div>
-
-<!--
-<div class="fancy">
-<a href="screen-hole.html" target="_blank">
-<img src="images/demo/screen-hole.png" class="superImage" />
-<br/>Screen Hole with Multiple Markers</a>
-<p class ="superText"> Simulating a "hole-in-the-wall" effect; uses <a href="markers/kanji-abcd.png">Kanji-ABCD</a> pattern. For simplicity, open <a href="screen-hole-QR.png">this image</a> and scan the QR code with your phone/tablet to be brought directly to the example (idea from Jerome Etienne). </p>
-</div>
+<style>
+	<!--/* Die Klasse welches das Logo Fix als oberste Schicht einfügt */ -->
+	.overlay-logo{ 
+		height: 80px;
+		position:absolute;
+		right: 0px;
+		top: 30px;
+		z-index: 0;
+	}
+	.overlay-image{
+		display: none;
+        position: relative;
+        text-align: center;
+        margin-top: 30px;
+        z-index: 0;
+    }
+	
+</style>
+		
+<!-- 
+  Example created by Lee Stemkoski: https://github.com/stemkoski
+  Based on the AR.js library and examples created by Jerome Etienne: https://github.com/jeromeetienne/AR.js/
 -->
 
-<!--
-<div class="fancy">
-<a href="zzzz.html" target="_blank">
-<img src="images/demo/zzzz.png" class="superImage" />
-<br/>zzzz</a>
-<p class ="superText"> ... </p>
-</div>
--->
+<script type="module">
+	import * as THREE from "../build/three.module.js";
+	import { GLTFLoader } from "./js/GLTFLoader.js";
 
+var scene, camera, renderer, clock, deltaTime, totalTime;
+
+var arToolkitSource, arToolkitContext;
+
+var mesh0, mesh1, mesh2, mesh3, mesh4, mesh8;
+
+var markerRoot1, markerRoot2, markerRoot3, markerRoot5, markerRoot8;
+
+var mixer;
+
+var gltfLoaded;
+
+var loader0, loader21, loader41, loader8;
+
+var diff;
+
+initialize();
+animate();
+
+function initialize()
+{
+	scene = new THREE.Scene();
+
+	let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
+	scene.add( ambientLight );
+				
+	camera = new THREE.Camera();
+	scene.add(camera);
+
+	renderer = new THREE.WebGLRenderer({
+		antialias : true,
+		alpha: true
+	});
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+	renderer.setSize( 1920, 1080 );
+	renderer.domElement.style.position = 'absolute'
+	renderer.domElement.style.top = '0px'
+	renderer.domElement.style.left = '0px'
+	document.body.appendChild( renderer.domElement );
+
+	clock = new THREE.Clock();
+	deltaTime = 0;
+	totalTime = 0;
+	
+	////////////////////////////////////////////////////////////
+	// setup arToolkitSource
+	////////////////////////////////////////////////////////////
+
+	arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType : 'webcam',
+	});
+
+	function onResize()
+	{
+		arToolkitSource.onResize()	
+		arToolkitSource.copySizeTo(renderer.domElement)	
+		if ( arToolkitContext.arController !== null )
+		{
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
+		}	
+	}
+
+	arToolkitSource.init(function onReady(){
+		onResize()
+	});
+	
+	// handle resize event
+	window.addEventListener('resize', function(){
+		onResize()
+	});
+	
+	////////////////////////////////////////////////////////////
+	// setup arToolkitContext
+	////////////////////////////////////////////////////////////	
+
+	// create atToolkitContext
+	arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: 'data/camera_para.dat',
+		detectionMode: 'mono'
+	});
+	
+	// copy projection matrix to camera when initialization complete
+	arToolkitContext.init( function onCompleted(){
+		camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+	});
+
+	////////////////////////////////////////////////////////////
+	// setup markerRoots
+	////////////////////////////////////////////////////////////
+
+
+	// build markerControls1  Seite1, Drohnenflug
+	markerRoot1 = new THREE.Group();
+	scene.add(markerRoot1);
+	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+		type: 'pattern', patternUrl: "data/pattern-prinzipien_vorleben.patt",
+	})	
+	
+	//VideoPlayButton dauerhaft hinzugefügt
+	loader0 = new GLTFLoader().setPath("models/");
+		  loader0.load("video_playbutton_v7.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(-0.75,0,1.5)
+			markerRoot1.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+	//Animation von "Hardfacts" die Dauerhaft passend zum Video abgespielt wird
+	var loader03 = new GLTFLoader().setPath("models/");
+		  loader03.load("hardfact_01.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			mixer= new THREE.AnimationMixer(gltf.scene);			
+			mixer.clipAction( gltf.animations[ 0 ] ).play(); //Startet die Animation
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(-0.75,1.25,1.5)
+			markerRoot1.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });
+	
+	let pointLight0 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight0.position.set(0.5,3,2);
+	markerRoot1.add( pointLight0 );
+	
+	//Video des Drohnenflug, über eine Plane als Textur hinzugefügt
+	let geometry0 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video0 = document.getElementById( 'Drohnenvideo' );
+	let texture0 = new THREE.VideoTexture( video0 );
+	texture0.minFilter = THREE.LinearFilter;
+	texture0.magFilter = THREE.LinearFilter;
+	texture0.format = THREE.RGBFormat;
+	let material0 = new THREE.MeshBasicMaterial( { map: texture0 } );
+	
+	mesh0 = new THREE.Mesh( geometry0, material0 );
+	mesh0.rotation.x = -Math.PI/2;
+	mesh0.scale.set(2,2,2);
+	mesh0.position.set(-0.75,1,1.5);
+	
+	markerRoot1.add( mesh0 );
+	
+	//Plane und Video Pausiert, über Touch aktiviert solange Marker 1 in View ist (siehe unten bei OnTouchStart)
+	mesh0.visible = false;
+	video0.pause();
+	
+	
+	
+	// build markerControls2 Deutschlandkarte, GLTF Mesh hinzugefügt, über TouchStart wird ein Overlay (nicht final) Aufgerufen
+	markerRoot2 = new THREE.Group();
+	scene.add(markerRoot2);
+	let markerControls2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
+		type: 'pattern', patternUrl: "data/pattern-top_10.patt",
+	})	
+	loader21 = new GLTFLoader().setPath("models/");
+		  loader21.load("BWI_AR_Mockup.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(2,2,2)
+			gltf.scene.position.set(-1,0,-1.5)
+			markerRoot2.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+	let pointLight210 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight210.position.set(0.5,3,2);
+	markerRoot2.add( pointLight210 );
+	
+	// build markerControls3 Marker für Frontpage "Tu Was Du Liebst"
+	markerRoot3 = new THREE.Group();
+	scene.add(markerRoot3);
+	let markerControls3 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot3, {
+		type: 'pattern', patternUrl: "data/pattern-augmented_reality.patt",
+	})	
+
+	// build markerControls5 Marker für Video Andrea
+	markerRoot5 = new THREE.Group();
+	scene.add(markerRoot5);
+	let markerControls5 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot5, {
+		type: 'pattern', patternUrl: "data/pattern-untersuchung.patt",
+	})	
+
+	// build markerControls8 Marker für Video Heinz
+	markerRoot8 = new THREE.Group();
+	scene.add(markerRoot8);
+	let markerControls8 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot8, {
+		type: 'pattern', patternUrl: "data/pattern-job_zusage.patt",
+	})	
+
+	//Mesh 1-3 für Paralax effekt der FrontPage "Tu Was Du Liebst", alle 3 planes mit Transparenz die vor einander positioniert sind
+	let geometry1 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader1 = new THREE.TextureLoader();
+	let texture1 = loader1.load( 'images/BG.png', render );
+	let material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
+	
+	let geometry2 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader2 = new THREE.TextureLoader();
+	let texture2 = loader2.load( 'images/Personen.png', render );
+	let material2 = new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.8,map: texture2 } );
+
+	let geometry3 = new THREE.PlaneBufferGeometry(1,1, 4,4);
+	let loader3 = new THREE.TextureLoader();
+	let texture3 = loader3.load( 'images/Typo.png', render );
+	let material3 = new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.9,map: texture3 } );
+
+	mesh1 = new THREE.Mesh( geometry1, material1 );
+	mesh1.rotation.x = -Math.PI/2;
+	mesh1.position.y = 0.1;
+	mesh1.scale.set(5,5,5);
+	mesh2 = new THREE.Mesh( geometry2, material2 );
+	mesh2.rotation.x = mesh1.rotation.x +0.4;
+	mesh2.position.y = 1.0;
+	mesh2.scale.set(5,5,5);
+	mesh3 = new THREE.Mesh( geometry3, material3 );
+	mesh3.rotation.x = mesh1.rotation.x +0.7;
+	mesh3.position.z = 0.5;
+	mesh3.position.y = 2;
+	mesh3.scale.set(5,5,5);
+	
+	markerRoot3.add( mesh1 );
+	markerRoot3.add( mesh2 );
+	markerRoot3.add( mesh3 );
+
+
+	let pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight.position.set(0.5,3,2);
+	markerRoot3.add( pointLight );
+
+	//Video Seite 5 einbindungne über Plane+Textur
+	let geometry4 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video4 = document.getElementById( 'Seite5Video' );
+	let texture4 = new THREE.VideoTexture( video4 );
+	texture4.minFilter = THREE.LinearFilter;
+	texture4.magFilter = THREE.LinearFilter;
+	texture4.format = THREE.RGBFormat;
+	let material4 = new THREE.MeshBasicMaterial( { map: texture4 } );
+
+	mesh4 = new THREE.Mesh( geometry4, material4 );
+	mesh4.rotation.x = -Math.PI/2;
+	mesh4.position.y = 1;
+	mesh4.scale.set(1,1,1);
+
+	markerRoot5.add( mesh4 );
+
+	//Play Button für Seite 5 hinzufügen
+	loader41 = new GLTFLoader().setPath("models/");
+		  loader41.load("video_playbutton_v7.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(0,0,0)
+			markerRoot5.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+
+	let pointLight4 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight4.position.set(0.5,3,2);
+	markerRoot5.add( pointLight4 );
+
+
+	mesh4.visible = false;
+	video4.pause();
+
+
+	//video für Seite 8 Hinzufügen (Plane + Textur)
+	let geometry8 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video8 = document.getElementById( 'Seite8Video' );
+	let texture8 = new THREE.VideoTexture( video8 );
+	texture8.minFilter = THREE.LinearFilter;
+	texture8.magFilter = THREE.LinearFilter;
+	texture8.format = THREE.RGBFormat;
+	let material8 = new THREE.MeshBasicMaterial( { map: texture8 } );
+
+	mesh8 = new THREE.Mesh( geometry8, material8 );
+	mesh8.rotation.x = -Math.PI/2;
+	mesh8.position.y = 1;
+	mesh8.scale.set(1,1,1);
+
+	markerRoot8.add( mesh8 );
+	//Video Play Button hinzufügen für Seite 8
+	loader8 = new GLTFLoader().setPath("models/");
+		  loader8.load("video_playbutton_v7.gltf", function (gltf) {
+			gltf.asset.material = new THREE.MeshStandardMaterial({color: 0xffffff});
+			gltf.scene.scale.set(1,1,1)
+			gltf.scene.position.set(0,0,0)
+			markerRoot8.add(gltf.scene);
+			gltfLoaded = true; //Prüft ob Modell geladen wurde, sonst gibts Errors in der Update
+		  });	
+
+
+	let pointLight8 = new THREE.PointLight( 0xffffff, 1, 100 );
+	pointLight8.position.set(0.5,3,2);
+	markerRoot8.add( pointLight8 );
+
+
+	mesh8.visible = false;
+	video8.pause();
+
+
+
+
+
+	//Erstellen eines EventListeners names OnTouchStart der auf 'touchstart' (auslösendes event beim touch) reagiert
+	renderer.domElement.addEventListener('touchstart', onTouchStart, false);
+}
+
+
+function update()
+{
+    // update artoolkit on every frame
+    if ( arToolkitSource.ready !== false )
+        arToolkitContext.update( arToolkitSource.domElement );
+	//Mesh0 = Hardfakts animation für Seite 1, Abspielen der Animatoin über mixer.update
+	if ( mesh0.visible ){
+        if(gltfLoaded){
+            mixer.update(deltaTime);
+        }
+    }
+}
+
+
+function render()
+{
+
+	//Auf Kundenwunsch sollten sich manche objekte immer zur Kamera ausrichtien, das passiert über die lookAt methode, 
+	//leider nur in alle 3 Achsen möglich, um ggf. einzelne Achsen zu isolieren wurde keine lösung gefunden
+	mesh1.lookAt(0,0,0);
+	mesh2.lookAt(0,0,0);
+	mesh3.lookAt(0,0,0);
+	mesh4.lookAt(0,0,0);
+	mesh8.lookAt(0,0,0);
+
+
+	renderer.render( scene, camera );
+}
+
+
+function animate()
+{
+	requestAnimationFrame(animate);
+	deltaTime = clock.getDelta();
+	totalTime += deltaTime;
+	update();
+	render();
+
+	/* //Funktion für Limitierung der Framerate, wurde getestet um das Zittern der Objekte (in jedem frame wird das objekt neu positioniert) zu verbessern, 
+	// leider löst das nicht den gewünschten effekt aus, es folgt ein "stottern" beim benutzen dieser funktion
+	diff = totalTime % 0.033 ;
+
+	if(diff < 0.01){
+		render();
+		//console.log("rendered");
+		//console.log(totalTime);
+	}*/
+}
+
+
+function onTouchStart()
+{
+	//console.log("HIT");
+	//Get Alle Objekte die ein/ausgeblendet werden
+    var logoDisplay = document.getElementById('overlay-logo-bwi').style;
+	var VideoDrohne = document.getElementById('Drohnenvideo');
+	var VideoAndrea = document.getElementById('Seite5Video');
+	var VideoHeinz = document.getElementById('Seite8Video');
+	//Falls Marker im Sichtfeld ist werden die Objekte eingeblendet, falls nicht werden diese ausgeblendet
+
+	//Marker 1 für Video Drohnenflug Anzeigen/Verstecken
+	if ( markerRoot1.visible ){
+		if(mesh0.visible){
+			mesh0.visible = false;
+			VideoDrohne.pause();
+		}
+		else{
+			mesh0.visible = true;
+			VideoDrohne.play();
+		}
+	}
+	else{
+		mesh0.visible = false;
+		VideoDrohne.pause();
+	}
+
+	//Marker 2 für Overlay Anzeigen/Verstecken
+	if ( markerRoot2.visible ){
+		
+		if(logoDisplay.display != "none"){
+			logoDisplay.display = "none";
+		}
+		else{
+			logoDisplay.display = "block";
+		}
+	}
+	else{
+		logoDisplay.display = "none";
+	}
+
+	//Marker 5 für Video Andrea Anzeigen/Verstecken
+	if ( markerRoot5.visible ){
+		if(mesh4.visible){
+			mesh4.visible = false;
+			VideoAndrea.pause();
+		}
+		else{
+			mesh4.visible = true;
+			VideoAndrea.play();
+		}
+	}
+	else{
+		mesh4.visible = false;
+		VideoAndrea.pause();
+	}
+
+	//Marker 8 für Video Heinz Anzeigen/Verstecken
+	if ( markerRoot8.visible ){
+		if(mesh8.visible){
+			mesh8.visible = false;
+			VideoHeinz.pause();
+		}
+		else{
+			mesh8.visible = true;
+			VideoHeinz.play();
+		}
+	}
+	else{
+		mesh8.visible = false;
+		VideoHeinz.pause();
+	}
+}
+
+</script> 
 </body>
 </html>
